@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="pong.js" defer></script>
+    <title>Pong</title>
+</head>
+
+<body>
+    <div id="gameOver"><img src="https://images.app.goo.gl/ApWwUX59ezeZCm3GA" alt="Game Over"></div>
+    <div id="enterInput">
+        <form>
+            <label for="name" id="labalName">enter your name:</label>
+            <input type="text" name="name" id="pName">
+        </form>
+        <h2 id="tag">Game Rull!!</h2>
+        <p id="rulls">first enter your name and when you are read click on
+            start button. You shoudl move the board to catch tha ball
+            each time you catch it you will get 10 score but if the ball
+            pass the border, you will game over
+        </p>
+        <button id="start">Start</button>
+    </div>
+   
+        <div id="parent">
+            <aside id="asidePong"><h2 id="pong">Pong!!</h2></aside>
+            <span id="asideScore">
+                <h2 id="score"> Score: </h2>
+                <h2 id="scoreNumber">0</h2>
+            </span>
+            <aside id="asideScoreNumber"><h2 id="scoreNum"></h2></aside>
+            <main>
+                <canvas id="game"></canvas>
+            </main>
+            <aside id="asidePlayerName"><h2 id="playerName">Player Name</h2></aside>
+            <aside id="asideResault"><h2 id="resault">Play Game</h2></aside>
+            <aside id="asideButton"><button id="startAgain">Start</button></aside>
+        </div>
+ 
+</body>
+</html>
