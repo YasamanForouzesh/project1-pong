@@ -51,7 +51,7 @@ body{
     grid-area: asideButton;
     background-color: black;
 }
-main{
+#divGame{
   margin: 0em 1em 0em 1em;
     grid-area: game;
     background-color:black;
@@ -65,6 +65,8 @@ h2{
 }
 #enterInput{
     display: flex;
+    flex-basis: 300px;
+    /* flex-grow: ; */
     margin-left: 30px;
     margin-right: 30px;
     flex-direction: column;
@@ -104,4 +106,10 @@ form{
     align-items: center;
     margin-top: 12px ;
     padding: 20px;
+}
+main{
+    /* margin: 50px 150px; */
+/* max-width: 300px; */
+/* display: flex;
+justify-content: center; */
 }
