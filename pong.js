@@ -4,8 +4,8 @@ let boardGame=document.getElementById("parent")
 let boardFirst=document.getElementById("enterInput")
 let playerNameGame=document.getElementById("playerName")
 startButton.addEventListener("click",()=>{
-    console.log(playerName.value)
-    if(playerName.value!=null){
+    
+    if(playerName.value!=""){
         boardFirst.style.display="none"
         boardGame.style.display="grid"
         playerNameGame.innerText=playerName.value
@@ -19,14 +19,16 @@ let scoreNumber=document.getElementById("scoreNumber")
 let canvas=document.getElementById("game")
 let resault=document.getElementById("resault")
 let wholeGame=()=>{
+    
     let check=false
     let gameScore=0
     let ctx=canvas.getContext('2d')
     ctx.clearRect(0,0,canvas.width,canvas.height)
     let ball=new CrawlerEmoji(130,70,4,0,Math.PI,true)
-    let board=new Crawler(0,140,50,10)
+    let board=new Crawler(0,145,40,5)
     startAgain.style.visibility="hidden"
     let b
+    console.log(`canvas width : ${canvas.width} canvas heigth: ${canvas.height}`)
     let locationBall=""
     resault.innerText="play Game"
     startAgain.style.visibility="hidden"
@@ -54,15 +56,14 @@ let wholeGame=()=>{
         gameScore+=10
         scoreNumber.innerText=gameScore
         scoreFace.innerText="😊"
-        if(ball.x==(board.x+board.width)/2){
-            
-
-            m=(-1*(m))/2
-            
-        }else{
-            
-            m=(-1*(m))/4
-        }
+        
+            let divM
+            do{
+                divM=Math.floor(Math.random()*5)
+            }while(divM==0)
+            m=(-1*(m))/divM
+            console.log(`m: ${m} divM: ${divM}`)
+        
         findB()
     }
     //each time incresea BAx and put in y=mx+b to find BAy
@@ -73,8 +74,7 @@ let wholeGame=()=>{
             resault.innerText="You Win"
             startAgain.style.visibility="visible"
         }
-        // console.log(`in ballMovement function x: ${ball.x} y: ${ball.y} location: ${locationBall} m: ${m}`)
-        if(ball.x+ball.radius==300){
+        if(ball.x+ball.radius==canvas.width){
             check=false
             scoreFace.innerText="🙄"
             if(m<0){
@@ -114,12 +114,10 @@ let wholeGame=()=>{
                 // win=true
             }else if(board.x >= ball.x && board.x <= ball.x+ball.radius){
                 reflexLine()
-                console.log("in board.x >= ball.x && board.x <= ball.x+ball.radius ")
                 check=true
 
             }else if(board.x+board.width<=ball.x && board.x+board.width>=ball.x-ball.radius){
                 reflexLine()
-                console.log("in board.x+board.width<=ball.x && board.x+board.width>ball.x-ball.radius")
                 check=true
             }
            else{
@@ -144,24 +142,20 @@ let wholeGame=()=>{
                    scoreFace.innerText="😊"
 
                }
-            // if(!win){
-            //     scoreFace.innerText="✋"
-            //     if(ball.y+ball.radius>165){
 
-                    
-            //         startAgain.style.visibility="visible"
-            //         resault.innerText="Game Over"
-            //         clearInterval(ballInterval)
-            //     }
-            //     gameOver.style.display="absolute"
-            // }
         }else if(ball.y-ball.radius<=0){
+            check=false
             scoreFace.innerText="🙄"
             // m=-1*(m)
-            if(m<0){
-                m=1
+            if(ball.x==150){
+                m=0
             }else{
-                m=-1
+
+                if(m<0){
+                    m=1
+                }else{
+                    m=-1
+                }
             }
             findB()
             if(m<0){
@@ -171,7 +165,7 @@ let wholeGame=()=>{
             }
             ball.y=m*ball.x+b
             //if ball come from left border the x has to add
-            locationBall="left"
+            locationBall="top"
         }{
             if(locationBall=="board"){
                 if(m>0){
@@ -191,6 +185,14 @@ let wholeGame=()=>{
             }else if(locationBall=="first"){
                 ball.x+=1
                 ball.y=(m)*ball.x+b
+            }else if(locationBall="top"){
+                if(m<0){
+                    ball.x-=1
+                    ball.y=(m)*ball.x+b
+                }else{
+                    ball.x+=1
+                    ball.y=(m)*ball.x+b
+                }
             }
     
         }
@@ -265,10 +267,15 @@ let wholeGame=()=>{
     let movement=(e)=>{
         switch (e.key){
             case "ArrowLeft":
-                board.x-=20
+                if(board.x!=0){
+                    board.x-=20
+                }
                 break
             case "ArrowRight":
-                board.x+=20
+                if(board.x+board.width<canvas.width){
+
+                    board.x+=20
+                }
                 break
         }
     }
