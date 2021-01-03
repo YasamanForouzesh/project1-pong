@@ -23,6 +23,9 @@ let wholeGame=()=>{
     let check=false
     let gameScore=0
     let ctx=canvas.getContext('2d')
+    // canvas.setAttribute("height",500)
+    // canvas.setAttribute("width",500)
+
     ctx.clearRect(0,0,canvas.width,canvas.height)
     let ball=new CrawlerEmoji(130,70,4,0,Math.PI,true)
     let board=new Crawler(0,145,40,5)
@@ -61,7 +64,13 @@ let wholeGame=()=>{
             do{
                 divM=Math.floor(Math.random()*5)
             }while(divM==0)
-            m=(-1*(m))/divM
+            if(m<0){
+                m=(1)/divM
+                
+            }else{
+                m=(-1)/divM
+
+            }
             console.log(`m: ${m} divM: ${divM}`)
         
         findB()
@@ -73,6 +82,8 @@ let wholeGame=()=>{
             check=false
             resault.innerText="You Win"
             startAgain.style.visibility="visible"
+            ball.alive=false
+            clearInterval(ba)
         }
         if(ball.x+ball.radius==canvas.width){
             check=false
@@ -147,16 +158,18 @@ let wholeGame=()=>{
             check=false
             scoreFace.innerText="🙄"
             // m=-1*(m)
-            if(ball.x==150){
-                m=0
+            let divM
+            do{
+                divM=Math.floor(Math.random()*5)
+            }while(divM==0)
+            if(m<0){
+                m=(1)/divM
+                
             }else{
+                m=(-1)/divM
 
-                if(m<0){
-                    m=1
-                }else{
-                    m=-1
-                }
             }
+            
             findB()
             if(m<0){
                 ball.x-=1
