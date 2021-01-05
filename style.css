@@ -8,7 +8,7 @@ body{
     margin-left: 50px;
     background-color: brown;
     grid-template-columns:150px 150px 150px ;
-    grid-template-rows: 125px 400fr 100fr ;
+    grid-template-rows: 126px 387fr 100fr ;
     grid-template-areas: "asidePong asideScore asideScoreNumber"
                          "game      game        game"
                          "asidePlayerName asideResault asideButton";
@@ -73,11 +73,12 @@ h2{
 
 }
 #start{
-    background-color: thistle;
     color: black;
     align-self: center;
-    padding: 40px;
+    padding: 10px;
     margin-bottom: 10px;
+    border: 1px solid #eee;
+    border-radius: 20px;
 }
 form{
     color: black;
@@ -107,11 +108,10 @@ form{
     margin-bottom: 12px;
     margin-top: 12px ;
     padding: 10px;
+    border-radius: 20px;
 }
 
 #flexTest{
-    /* margin: 50px 150px; */
-/* max-width: 300px; */
 display: flex;
 justify-content: center;
 align-items: center;
