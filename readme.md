@@ -1,5 +1,5 @@
 # Pong Game!
-# Summery:
+# Summary:
 ## This is the clean program that help me to review what I learned from software engineer massive generalassembly week 2. This program can help to learn about flex box and grid which is cool.
 # Technologies:
 ##   1. Javascript 
